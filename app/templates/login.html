@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-sm p-8 bg-white shadow-xl rounded-xl">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Sign In</h2>
+        {% if message %}
+        <p class="text-center text-sm text-red-500 mb-4">{{ message }}</p>
+        {% endif %}
+
+        <!-- Existing Login Form (Email and Password) -->
+        <form method="POST" action="/users/login" class="space-y-5">
+            <input type="email" name="email" placeholder="Email Address" class="input" required>
+            <input type="password" name="password" placeholder="Password" class="input" required>
+            <button type="submit" class="btn-primary">Log In</button>
+        </form>
+
+        <!-- Forgot Password Link -->
+        <p class="text-center mt-2">
+            <a href="/users/forgot-password" class="text-blue-600 hover:underline">Forgot Password?</a>
+        </p>
+
+        <!-- Google OAuth2 Login Button -->
+        <div class="mt-4 text-center">
+            <p class="text-sm text-gray-600">Or</p>
+            <a href="/auth/google" class="btn-google flex items-center justify-center mt-2">
+                <img src="https://developers.google.com/identity/images/g-logo.png"
+     alt="Google Logo" class="w-5 h-5 mr-2">
+                Continue with Google
+            </a>
+        </div>
+
+        <p class="mt-4 text-center text-sm">
+            Don’t have an account?
+            <a href="/users/register" class="text-blue-600 hover:underline">Register</a>
+        </p>
+    </div>
+</div>
+
+<!-- Styling for Google Button -->
+<style>
+    .btn-google {
+        background-color: #ffffff;
+        color: #333;
+        border: 1px solid #ddd;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: background 0.3s;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+
+    .btn-google:hover {
+        background-color: #f0f0f0;
+    }
+
+    /* Style for Forgot Password link */
+    .text-blue-600:hover {
+        text-decoration: underline;
+        color: #1a73e8;
+    }
+</style>
+{% endblock %}

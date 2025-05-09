@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Edit Task{% endblock %}
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-gray-50">
+    <div class="w-full max-w-md p-8 bg-white rounded-xl shadow-lg">
+        <h2 class="text-2xl font-bold mb-6 text-center">Edit Task</h2>
+        <form method="POST" action="/tasks/edit/{{ task.id }}" class="space-y-5">
+            <input type="text" name="title" value="{{ task.title }}" class="input" required>
+            <textarea name="description" class="input" required>{{ task.description }}</textarea>
+            <select name="priority" class="input" required>
+                <option value="high" {% if task.priority == 'high' %}selected{% endif %}>High</option>
+                <option value="medium" {% if task.priority == 'medium' %}selected{% endif %}>Medium</option>
+                <option value="low" {% if task.priority == 'low' %}selected{% endif %}>Low</option>
+            </select>
+            <input type="date" name="deadline" value="{{ task.deadline }}" class="input" required>
+            <button type="submit" class="btn-primary">Update Task</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
