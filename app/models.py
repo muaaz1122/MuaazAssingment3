@@ -28,6 +28,7 @@ class Task(Base):
     priority = Column(String, nullable=False)
     deadline = Column(DateTime, nullable=False)
     is_completed = Column(Boolean, default=False)
+    is_verified = Column(Boolean, default=False)
 
     # ✅ Foreign key to users
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
